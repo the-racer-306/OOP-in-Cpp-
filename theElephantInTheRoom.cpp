@@ -3,7 +3,14 @@
 using std::string;
 using namespace std;
 
-class Employee // Encapsulation
+class AbstractEmployee
+{
+  virtual void ASkForPromotion() = 0; // pure virual function
+
+};
+
+
+class Employee:AbstractEmployee
 {
 private:
   string Name;
@@ -42,16 +49,25 @@ public:
     Name = name;
     Company = company;
     Age = age;
-  }
+  };
+
+
+void ASkForPromotion(){
+  if(Age>30)
+    cout << Name << " got Promoted!" << endl;
+  else 
+    cout << Name << ", sorry not promoted"<< endl;
+};
 };
 
 int main() 
 {
-Employee employee1 = Employee("khaled", "Google", 21);
-employee1.setAge(5);
-int age = employee1.getAge();
-employee1.introduceYourSelf();
-cout << age << endl;
+Employee employee1= Employee("khaled", "Google", 21);
+employee1.ASkForPromotion();
+
+Employee employee2 = Employee("John", "Amazon", 31);
+employee2.ASkForPromotion();
+
 }
 
 
